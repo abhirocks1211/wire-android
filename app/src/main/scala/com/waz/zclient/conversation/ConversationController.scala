@@ -80,7 +80,7 @@ class ConversationController(implicit injector: Injector, context: Context, ec: 
 
   val currentConvType: Signal[ConversationType] = currentConv.map(_.convType).disableAutowiring()
   val currentConvName: Signal[String] = currentConv.map(_.displayName).map {
-    case ""   => getString(R.string.conversation_list__def_conv_name)
+    case Name.Empty => getString(R.string.conversation_list__def_conv_name)
     case name => name
   } // the name of the current conversation can be edited (without switching)
 

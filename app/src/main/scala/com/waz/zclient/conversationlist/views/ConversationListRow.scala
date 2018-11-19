@@ -104,7 +104,7 @@ class NormalConversationListRow(context: Context, attrs: AttributeSet, style: In
       // This hack was in the UiModule Conversation implementation
       // XXX: this is a hack for some random errors, sometimes conv has empty name which is never updated
       zms.head.foreach {_.conversations.forceNameUpdate(conv.id) }
-      getString(R.string.conversation_list__def_conv_name)
+      Name(getString(R.string.conversation_list__def_conv_name))
     } else
       conv.displayName
   }
@@ -237,7 +237,7 @@ class NormalConversationListRow(context: Context, attrs: AttributeSet, style: In
 
   def setConversation(conversationData: ConversationData): Unit = if (this.conversationData.forall(_.id != conversationData.id)) {
     this.conversationData = Some(conversationData)
-    title.setText(if (conversationData.displayName.nonEmpty) conversationData.displayName else getString(R.string.conversation_list__def_conv_name))
+    title.setText(if (conversationData.displayName.str.nonEmpty) conversationData.displayName.str else getString(R.string.conversation_list__def_conv_name))
 
     badge.setStatus(ConversationBadge.Empty)
     subtitle.setText("")
