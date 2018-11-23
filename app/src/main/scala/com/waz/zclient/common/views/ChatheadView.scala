@@ -413,7 +413,7 @@ protected class ChatheadController(val setSelectable:            Boolean        
       ChatheadDetails(
         accentColor = ColorVal(AccentColor(user.accent).color),
         connectionStatus = user.connection,
-        initials = NameParts.parseFrom(if (user.deleted) getString(R.string.user_deleted_username) else user.name).initials,
+        initials = NameParts.parseFrom(if (user.deleted) getString(R.string.default_deleted_username) else user.name).initials,
         knownUser = knownUser,
         grayScale = !(user.isConnected || user.isSelf || isTeamMember),
         assetId = user.picture,
